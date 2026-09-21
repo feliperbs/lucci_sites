@@ -1,0 +1,318 @@
+/* ==========================================================================
+   MODELO: PSIQUIATRIA E SAÚDE MENTAL (CLÍNICA BOUTIQUE)
+   Paleta: Verde Teal (Primária), Menta Suave (Fundo), Cinza Quente
+   Tipografia: Lora (Títulos) e Nunito (Textos)
+   Layout: Menu Lateral (Sidebar) Fixo
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Nunito:wght@300;400;600&display=swap');
+
+:root {
+  --psi-primary: #2C4A52;      
+  --psi-accent: #6C8E87;       
+  --psi-bg: #E8F0ED; /* Cinza esverdeado mais fechado e profundo */
+  --psi-surface: #FFFFFF;
+  --psi-text: #4A5568;         
+  --psi-title: #17332E; /* Verde profundo para títulos */        
+  --sidebar-width: 280px;
+  --transition: all 0.3s ease;
+}
+
+body.psi-page {
+  font-family: 'Nunito', sans-serif;
+  color: var(--psi-text);
+  background-color: var(--psi-bg);
+  line-height: 1.8;
+  margin: 0;
+  padding: 0;
+  /* Espaço para a sidebar */
+  padding-left: var(--sidebar-width);
+}
+
+.psi-page h1, .psi-page h2, .psi-page h3 {
+  font-family: 'Lora', serif;
+  color: var(--psi-title);
+  font-weight: 500;
+  margin-top: 0;
+}
+
+.psi-page a {
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+/* ==========================================================================
+   SIDEBAR (MENU LATERAL)
+   ========================================================================== */
+.psi-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--sidebar-width);
+  height: 100vh;
+  background-color: var(--psi-surface);
+  box-shadow: 2px 0 20px rgba(44, 74, 82, 0.05);
+  display: flex;
+  flex-direction: column;
+  padding: 60px 40px;
+  box-sizing: border-box;
+  z-index: 1000;
+}
+
+.psi-sidebar-logo {
+  font-family: 'Lora', serif;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--psi-primary);
+  margin-bottom: 60px;
+  line-height: 1.2;
+}
+
+.psi-sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  flex-grow: 1;
+}
+
+.psi-sidebar-nav a {
+  color: var(--psi-text);
+  font-weight: 600;
+  font-size: 1.05rem;
+  padding: 8px 0;
+  border-bottom: 1px solid transparent;
+}
+
+.psi-sidebar-nav a:hover {
+  color: var(--psi-primary);
+  border-bottom-color: var(--psi-accent);
+}
+
+.psi-sidebar-footer {
+  font-size: 0.8rem;
+  color: #a0aec0;
+}
+
+/* ==========================================================================
+   BUTTONS
+   ========================================================================== */
+.psi-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 36px;
+  background-color: var(--psi-primary);
+  color: #fff;
+  border-radius: 50px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 4px 14px rgba(44, 74, 82, 0.3);
+}
+
+.psi-btn:hover {
+  background-color: var(--psi-title);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(44, 74, 82, 0.4);
+}
+
+/* ==========================================================================
+   HERO ASSIMÉTRICO
+   ========================================================================== */
+.psi-main-content {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 60px;
+  box-sizing: border-box;
+}
+
+.psi-hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.psi-hero-text {
+  flex: 1;
+  max-width: 650px;
+  position: relative;
+  z-index: 10;
+}
+
+.psi-hero-title {
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  line-height: 1.05;
+  margin-bottom: 30px;
+  letter-spacing: -2px;
+}
+
+.psi-hero-subtitle {
+  font-size: clamp(1.1rem, 2vw, 1.25rem);
+  margin-bottom: 40px;
+  color: var(--psi-text);
+  line-height: 1.7;
+}
+
+/* Fundo Atmosférico Orgânico */
+.psi-blob {
+  position: absolute;
+  top: 10%;
+  right: 20%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(108,142,135,0.15) 0%, rgba(232,240,237,0) 70%);
+  border-radius: 50%;
+  filter: blur(40px);
+  z-index: 0;
+  animation: float 8s ease-in-out infinite;
+}
+
+/* Animação Flutuante para elementos orgânicos */
+@keyframes float {
+  0% { transform: translateY(0px) scale(1); }
+  50% { transform: translateY(-20px) scale(1.05); }
+  100% { transform: translateY(0px) scale(1); }
+}
+
+/* Animação da Máscara Morfológica (Silhueta de Cérebro/Mente) */
+@keyframes morph {
+  /* Formato lembrando os lobos cerebrais (Top-left, Top-right, Bottom-right, Bottom-left) */
+  0% { border-radius: 40% 60% 50% 50% / 50% 50% 50% 50%; }
+  50% { border-radius: 50% 50% 40% 60% / 40% 60% 60% 40%; }
+  100% { border-radius: 40% 60% 50% 50% / 50% 50% 50% 50%; }
+}
+
+.psi-hero-img-wrap {
+  flex-shrink: 0;
+  width: clamp(350px, 40vw, 500px);
+  height: clamp(350px, 40vw, 500px);
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(44, 74, 82, 0.2);
+  z-index: 2;
+  /* Efeitos Orgânicos */
+  animation: morph 8s ease-in-out infinite, float 6s ease-in-out infinite alternate;
+  border: 4px solid rgba(255, 255, 255, 0.4);
+}
+
+.psi-hero-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ==========================================================================
+   SERVICES SECTION (CARDS MINIMALISTAS)
+   ========================================================================== */
+.psi-section {
+  padding: 100px 0;
+}
+
+.psi-section-title {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.psi-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  margin-top: 60px;
+}
+
+.psi-card {
+  background: var(--psi-surface);
+  padding: 50px;
+  border-radius: 24px;
+  transition: var(--transition);
+  border: 1px solid rgba(0,0,0,0.02);
+}
+
+.psi-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px rgba(44, 74, 82, 0.08);
+  border-color: rgba(44, 74, 82, 0.1);
+}
+
+.psi-card h3 {
+  font-size: 1.6rem;
+  color: var(--psi-primary);
+  margin-bottom: 16px;
+}
+
+.psi-card p {
+  font-size: 1.05rem;
+  color: var(--psi-text);
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+.psi-footer {
+  padding: 60px 0;
+  border-top: 1px solid rgba(44, 74, 82, 0.1);
+  margin-top: 60px;
+}
+
+@media (max-width: 992px) {
+  body.psi-page {
+    padding-left: 0;
+    padding-top: 80px;
+  }
+  .psi-sidebar {
+    width: 100%;
+    height: 80px;
+    flex-direction: row;
+    padding: 0 20px;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .psi-sidebar-logo {
+    margin-bottom: 0;
+    font-size: 1.4rem;
+  }
+  .psi-sidebar-logo br {
+    display: none;
+  }
+  .psi-sidebar-nav, .psi-sidebar-footer, .psi-sidebar .psi-btn {
+    display: none;
+  }
+  .psi-sidebar::after {
+    content: '☰';
+    font-size: 1.8rem;
+    color: var(--psi-primary);
+  }
+  .psi-main-content {
+    padding: 0 20px;
+  }
+  .psi-hero {
+    flex-direction: column-reverse;
+    min-height: auto;
+    padding-top: 40px;
+    padding-bottom: 60px;
+  }
+  .psi-hero-text {
+    max-width: 100%;
+    text-align: center;
+  }
+  .psi-hero-img-wrap {
+    width: 300px;
+    height: 300px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+  }
+  .psi-grid-2 {
+    grid-template-columns: 1fr;
+  }
+  .psi-section {
+    padding: 60px 0;
+  }
+  .psi-card {
+    padding: 30px;
+  }
+}

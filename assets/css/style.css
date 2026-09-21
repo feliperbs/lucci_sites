@@ -1,0 +1,529 @@
+/* 
+=====================================================
+LUCCI SITES MÉDICOS - TEMPLATE BASE
+=====================================================
+INSTRUÇÕES DE USO:
+Altere as variáveis no bloco :root abaixo para mudar
+rapidamente a identidade visual de todo o site.
+=====================================================
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+:root {
+  /* ================= CORES PRINCIPAIS ================= */
+  /* Azul Petróleo / Verde Escuro Clínico */
+  --color-primary: #0F4C5C; 
+  --color-primary-hover: #0a3642;
+  
+  /* Dourado Suave / Detalhes Luxuosos */
+  --color-accent: #D4AF37; 
+  --color-accent-hover: #c19b28;
+  
+  /* ================= CORES DE FUNDO ================= */
+  --bg-light: #F8FAFC; /* Gelo (Fundo Principal) */
+  --bg-white: #FFFFFF; /* Branco (Fundo de Cards) */
+  --bg-dark: #0F172A; /* Azul escuro para o rodapé */
+  
+  /* ================= TEXTOS E BORDAS ================= */
+  --text-dark: #1E293B; /* Títulos (Preto suave) */
+  --text-muted: #64748B; /* Textos corridos (Cinza chumbo) */
+  --border-color: #E2E8F0; /* Linhas divisórias */
+  
+  /* ================= TIPOGRAFIA ================= */
+  --font-title: 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  
+  --transition: all 0.3s ease;
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+}
+
+/* ================= RESET BÁSICO ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-light);
+  color: var(--text-muted);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-title);
+  color: var(--text-dark);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ================= BOTÕES ================= */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 32px;
+  background-color: var(--color-primary);
+  color: #fff !important;
+  font-family: var(--font-title);
+  font-weight: 600;
+  border-radius: 99px;
+  transition: var(--transition);
+  border: 2px solid var(--color-primary);
+  cursor: pointer;
+  text-align: center;
+}
+
+.btn:hover {
+  background-color: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(15, 76, 92, 0.2);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--color-primary) !important;
+}
+
+.btn-outline:hover {
+  background-color: var(--color-primary);
+  color: #fff !important;
+}
+
+/* ================= HEADER ================= */
+.header {
+  background-color: var(--bg-white);
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 20px 0;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-text {
+  font-family: var(--font-title);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  letter-spacing: -0.5px;
+}
+
+.logo-text span {
+  color: var(--color-accent);
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+}
+
+.nav-link {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-dark);
+  transition: var(--transition);
+}
+
+.nav-link:hover {
+  color: var(--color-accent);
+}
+
+/* Menu Mobile (Hamburger) */
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+.mobile-menu-btn svg {
+  width: 28px;
+  height: 28px;
+  stroke: var(--color-primary);
+}
+
+/* ================= SEÇÕES PADRÃO ================= */
+.section {
+  padding: 100px 0;
+}
+
+.section-light {
+  background-color: var(--bg-white);
+}
+
+.section-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 64px;
+}
+
+.section-title {
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  margin-bottom: 20px;
+}
+
+.section-subtitle {
+  font-size: 1.15rem;
+  color: var(--text-muted);
+}
+
+/* ================= HERO SECTION ================= */
+.hero {
+  padding: 120px 0;
+  background-color: var(--bg-light);
+  overflow: hidden;
+  position: relative;
+}
+
+/* Bolha decorativa de fundo */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -10%;
+  right: -5%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(212,175,55,0.08) 0%, rgba(212,175,55,0) 70%);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-title {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  color: var(--color-primary);
+  margin-bottom: 24px;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  margin-bottom: 40px;
+  line-height: 1.7;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.hero-img-wrap {
+  position: relative;
+}
+
+.hero-img-wrap img {
+  border-radius: var(--radius-lg);
+  box-shadow: 0 20px 40px rgba(15, 76, 92, 0.1);
+  width: 100%;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+}
+
+/* ================= GRIDS E CARDS ================= */
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 32px;
+}
+
+.card {
+  background: var(--bg-white);
+  padding: 40px 32px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  transition: var(--transition);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+  border-color: var(--color-accent);
+}
+
+.card-icon {
+  width: 48px;
+  height: 48px;
+  background-color: rgba(212, 175, 55, 0.1); /* Dourado suave transparente */
+  color: var(--color-accent);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.card-icon svg {
+  width: 24px;
+  height: 24px;
+  stroke-width: 2;
+}
+
+.card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 12px;
+}
+
+.card p {
+  font-size: 1rem;
+}
+
+/* ================= COMO FUNCIONA (PASSOS) ================= */
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 32px;
+}
+
+.step-card {
+  text-align: center;
+  padding: 32px 24px;
+}
+
+.step-number {
+  width: 64px;
+  height: 64px;
+  background-color: var(--color-primary);
+  color: #fff;
+  font-family: var(--font-title);
+  font-size: 1.5rem;
+  font-weight: 700;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 24px;
+  box-shadow: 0 10px 20px rgba(15, 76, 92, 0.2);
+}
+
+/* ================= FAQ ================= */
+.faq-wrap {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  background: var(--bg-white);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  margin-bottom: 16px;
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.faq-summary {
+  padding: 24px;
+  font-family: var(--font-title);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+}
+.faq-summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-icon {
+  width: 24px;
+  height: 24px;
+  color: var(--color-accent);
+  transition: transform 0.3s ease;
+}
+
+details[open] .faq-item {
+  border-color: var(--color-primary);
+}
+
+details[open] .faq-icon {
+  transform: rotate(180deg);
+}
+
+.faq-content {
+  padding: 0 24px 24px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ================= CTA FINAL E RODAPÉ ================= */
+.cta-box {
+  background: var(--color-primary);
+  border-radius: var(--radius-lg);
+  padding: 80px 40px;
+  text-align: center;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-box h2, .cta-box p {
+  color: #fff;
+  position: relative;
+  z-index: 1;
+}
+
+.cta-box .btn {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  color: #000 !important;
+}
+.cta-box .btn:hover {
+  background-color: #fff;
+  border-color: #fff;
+}
+
+.footer {
+  background-color: var(--bg-dark);
+  color: #94A3B8;
+  padding: 80px 0 32px;
+}
+
+.footer h3 {
+  color: #fff;
+  margin-bottom: 24px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 64px;
+  margin-bottom: 64px;
+}
+
+.footer-disclaimer {
+  font-size: 0.85rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 32px;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* ================= WPP FLUTUANTE ================= */
+.floating-whatsapp {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 60px;
+  height: 60px;
+  background-color: #25D366;
+  color: #FFF;
+  border-radius: 50%;
+  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+.floating-whatsapp:hover {
+  transform: scale(1.1);
+}
+.floating-whatsapp svg {
+  width: 32px;
+  height: 32px;
+  fill: currentColor;
+}
+
+/* ================= RESPONSIVO ================= */
+@media (max-width: 900px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .hero-buttons {
+    justify-content: center;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none; /* Seria gerido pelo JS via classe .active */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: var(--bg-white);
+    flex-direction: column;
+    padding: 24px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+  }
+  .nav-links.active {
+    display: flex;
+  }
+  .mobile-menu-btn {
+    display: block;
+  }
+  .section {
+    padding: 60px 0;
+  }
+  .hero {
+    padding: 60px 0;
+  }
+  .cta-box {
+    padding: 40px 24px;
+  }
+}
+
+/* ================= ANIMAÇÕES GERAIS (Reveal) ================= */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }

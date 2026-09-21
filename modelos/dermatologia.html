@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dra. Laura | Dermatologia Estética (High-End)</title>
+  <link rel="stylesheet" href="../assets/css/dermato.css">
+</head>
+<body class="derm-page">
+
+  <!-- CABEÇALHO FLUTUANTE -->
+  <header class="derm-header">
+    <a href="#" class="derm-logo">Laura</a>
+    
+    <!-- O menu fica na direita, flutuando sobre a foto, então a cor dele no CSS é clara -->
+    <nav class="derm-nav">
+      <a href="#galeria">Tratamentos</a>
+      <a href="#contato">Agendar Consulta</a>
+    </nav>
+  </header>
+
+  <!-- HERO: COLAGEM EDITORIAL (VANGUARDA) -->
+  <section class="derm-collage-hero">
+    
+    <!-- Título Gigante de Fundo (Marca d'água) -->
+    <div class="derm-collage-bg-text">LAPIDANDO A BELEZA</div>
+
+    <div class="derm-collage-container">
+      
+      <!-- Bloco de Texto -->
+      <div class="derm-collage-text">
+        <h1 class="derm-hero-title">A arte de lapidar a <span>sua melhor versão.</span></h1>
+        <p class="derm-hero-subtitle">Protocolos faciais focados em naturalidade e elegância. Um atendimento estético onde a sutileza é a regra, e não a exceção.</p>
+        <a href="#galeria" class="derm-btn">Explorar Tratamentos</a>
+      </div>
+
+      <!-- Imagens em Camadas (Overlapping) -->
+      <div class="derm-img-main">
+        <img src="../assets/img/derm_hero.png" alt="Dra. Laura Dermatologista">
+      </div>
+      
+      <div class="derm-img-sub">
+        <img src="../assets/img/derm_svc2.png" alt="Textura Sérum">
+      </div>
+      
+    </div>
+  </section>
+
+  <!-- GALERIA DE ARTE (TRATAMENTOS) -->
+  <section id="galeria" class="derm-gallery">
+    <div class="derm-gallery-intro reveal">
+      <h2>Protocolos de Beleza.</h2>
+      <p style="font-size: 1.1rem; font-weight: 300;">Nosso foco é realizar intervenções sutis que deixam as pessoas se perguntando o que você fez para estar tão bem, sem nunca perceberem a presença de agulhas.</p>
+    </div>
+
+    <!-- Item 1 -->
+    <div class="derm-gallery-item reveal">
+      <div class="derm-gallery-img reveal delay-1">
+        <img src="../assets/img/derm_svc1.png" alt="Pele perfeita e hidratada">
+      </div>
+      <div class="derm-gallery-text reveal delay-2">
+        <h3>Preenchimento Facial</h3>
+        <p>Devolvemos proporções perdidas pelo tempo através do uso estratégico do ácido hialurônico. Restauramos as sombras e luzes da sua juventude para um rosto descansado e radiante.</p>
+        <a href="#" class="derm-btn derm-btn-outline" style="padding: 14px 30px;">Agendar</a>
+      </div>
+    </div>
+
+    <!-- Item 2 (Invertido) -->
+    <div class="derm-gallery-item reverse reveal">
+      <div class="derm-gallery-img reveal delay-1">
+        <img src="../assets/img/derm_svc2.png" alt="Gota de sérum premium">
+      </div>
+      <div class="derm-gallery-text reveal delay-2">
+        <h3>Bioestimuladores</h3>
+        <p>O pilar fundamental de qualquer gerenciamento de envelhecimento. Estimulamos a produção do seu próprio colágeno de forma profunda, tratando a flacidez com resultados duradouros.</p>
+        <a href="#" class="derm-btn derm-btn-outline" style="padding: 14px 30px;">Agendar</a>
+      </div>
+    </div>
+
+    <!-- Item 3 -->
+    <div class="derm-gallery-item reveal">
+      <div class="derm-gallery-img reveal delay-1">
+        <img src="../assets/img/derm_svc3.png" alt="Olhar sem rugas, descansado">
+      </div>
+      <div class="derm-gallery-text reveal delay-2">
+        <h3>Neuromoduladores</h3>
+        <p>A toxina botulínica aplicada com maestria. Suavizamos as rugas de expressão preservando a naturalidade dos seus movimentos, promovendo um olhar extremamente leve.</p>
+        <a href="#" class="derm-btn derm-btn-outline" style="padding: 14px 30px;">Agendar</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="derm-footer">
+    <div>
+      <div class="derm-footer-brand">Laura</div>
+      <p style="margin-top: 10px; font-size: 0.9rem; font-style: italic;">Dermatologia & Estética.</p>
+    </div>
+    <div class="derm-footer-info">
+      <p>CRM-SP 000000 | RQE 000000</p>
+      <p style="margin-top: 8px;">Modelo criado por Lucci Sites Médicos.</p>
+    </div>
+  </footer>
+
+  <!-- Script para animação no Scroll -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          }
+        });
+      }, {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px"
+      });
+
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    });
+  </script>
+
+</body>
+</html>
