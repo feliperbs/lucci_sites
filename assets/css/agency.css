@@ -1,24 +1,32 @@
-/* ==========================================================================
+/* ========================================================================== 
    LUCCI SITES MÉDICOS - AGENCY STYLES
-   Paleta: Azul Marinho, Dourado Suave, Cinza Claro, Branco
+   Mobile First
    ========================================================================== */
 
 :root {
-  --agency-primary: #0A192F;       /* Azul Marinho Escuro */
-  --agency-primary-light: #112240; /* Azul Marinho Secundário */
-  --agency-accent: #C5A059;        /* Dourado Suave */
+  --agency-primary: #0A192F;
+  --agency-primary-light: #112240;
+  --agency-accent: #C5A059;
   --agency-accent-hover: #D6B570;
-  --agency-bg: #F8FAFC;            /* Cinza Claro */
-  --agency-surface: #FFFFFF;       /* Branco */
-  --agency-text: #334155;          /* Cinza Escuro para textos */
+  --agency-bg: #F8FAFC;
+  --agency-surface: #FFFFFF;
+  --agency-text: #334155;
   --agency-text-light: #64748B;
   --agency-title: #0F172A;
   --transition: all 0.3s ease;
 }
 
-/* Base resets specifically for the agency page */
 html {
   scroll-behavior: smooth;
+  width: 100%;
+  min-width: 0;
+  overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 body.agency-page {
@@ -28,6 +36,15 @@ body.agency-page {
   line-height: 1.6;
   margin: 0;
   padding: 0;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body.agency-page img,
+body.agency-page svg {
+  max-width: 100%;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -47,17 +64,19 @@ a {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 16px;
 }
 
 /* ==========================================================================
    BUTTONS & BADGES
    ========================================================================== */
+
 .agency-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 14px 28px;
+  width: 100%;
+  padding: 14px 24px;
   border-radius: 8px;
   font-family: 'Inter', sans-serif;
   font-weight: 600;
@@ -65,18 +84,13 @@ a {
   transition: var(--transition);
   cursor: pointer;
   border: none;
+  box-sizing: border-box;
 }
 
 .agency-btn-primary {
   background-color: var(--agency-accent);
   color: #fff;
   box-shadow: 0 4px 14px rgba(197, 160, 89, 0.3);
-}
-
-.agency-btn-primary:hover {
-  background-color: var(--agency-accent-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(197, 160, 89, 0.4);
 }
 
 .agency-btn-outline {
@@ -88,6 +102,16 @@ a {
 .agency-btn-outline:hover {
   background-color: var(--agency-primary);
   color: #fff;
+}
+
+.agency-btn-primary:hover {
+  background-color: var(--agency-accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(197, 160, 89, 0.4);
+}
+
+.agency-model-content .agency-btn-primary {
+  width: 100%;
 }
 
 .agency-badge {
@@ -106,6 +130,7 @@ a {
 /* ==========================================================================
    HEADER
    ========================================================================== */
+
 .agency-header {
   position: fixed;
   top: 0;
@@ -122,25 +147,39 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 80px;
+  height: 70px;
 }
 
 .agency-logo img {
-  height: 60px;
+  height: 70px;
   width: auto;
   object-fit: contain;
 }
 
 .agency-nav {
+  display: none;
+  position: absolute;
+  top: 70px;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+  padding: 16px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+  box-sizing: border-box;
+}
+
+.agency-nav.active {
   display: flex;
-  align-items: center;
-  gap: 32px;
 }
 
 .agency-nav a {
   font-weight: 500;
   font-size: 0.95rem;
   color: var(--agency-primary);
+  padding: 12px 8px;
 }
 
 .agency-nav a:hover {
@@ -148,7 +187,7 @@ a {
 }
 
 .agency-menu-btn {
-  display: none;
+  display: block;
   background: none;
   border: none;
   color: var(--agency-primary);
@@ -156,60 +195,67 @@ a {
 }
 
 /* ==========================================================================
-   HERO SECTION
+   HERO
    ========================================================================== */
+
 .agency-hero {
-  padding: 180px 0 100px;
+  padding: 120px 0 60px;
   background-color: var(--agency-surface);
   position: relative;
   overflow: hidden;
+  text-align: center;
 }
 
 .agency-hero::before {
   content: '';
   position: absolute;
-  top: -50%;
-  right: -20%;
-  width: 800px;
-  height: 800px;
-  background: radial-gradient(circle, rgba(197,160,89,0.05) 0%, transparent 70%);
+  top: -30%;
+  right: -50%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(
+    circle,
+    rgba(197,160,89,0.05) 0%,
+    transparent 70%
+  );
   border-radius: 50%;
   z-index: 0;
 }
 
 .agency-hero-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
+  grid-template-columns: 1fr;
+  gap: 40px;
   align-items: center;
   position: relative;
   z-index: 1;
 }
 
 .agency-hero-title {
-  font-size: 3.5rem;
+  font-size: 2.2rem;
   line-height: 1.1;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
   color: var(--agency-primary);
 }
 
 .agency-hero-subtitle {
-  font-size: 1.25rem;
+  font-size: 1rem;
   color: var(--agency-text-light);
-  margin-bottom: 40px;
+  margin: 0 auto 32px;
   max-width: 90%;
 }
 
 .agency-hero-actions {
   display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-  margin-bottom: 40px;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 32px;
 }
 
 .agency-hero-badges {
   display: flex;
-  gap: 16px;
+  gap: 12px;
+  justify-content: center;
   flex-wrap: wrap;
 }
 
@@ -221,19 +267,20 @@ a {
   width: 100%;
   border-radius: 16px;
   box-shadow: 0 25px 50px rgba(10, 25, 47, 0.15);
-  transform: perspective(1000px) rotateY(-5deg) rotateX(5deg);
+  transform: none;
   transition: transform 0.5s ease;
 }
 
 .agency-hero-mockup:hover img {
-  transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
+  transform: none;
 }
 
 /* ==========================================================================
    SECTIONS & GRIDS
    ========================================================================== */
+
 .agency-section {
-  padding: 100px 0;
+  padding: 60px 0;
 }
 
 .agency-section-bg {
@@ -250,42 +297,39 @@ a {
 }
 
 .agency-title {
-  font-size: 2.5rem;
+  font-size: 2rem;
   margin-bottom: 16px;
   text-align: center;
 }
 
 .agency-subtitle {
-  font-size: 1.15rem;
+  font-size: 1rem;
   color: var(--agency-text-light);
   text-align: center;
   max-width: 700px;
-  margin: 0 auto 60px;
+  margin: 0 auto 40px;
 }
 
 .agency-section-dark .agency-subtitle {
   color: #94A3B8;
 }
 
-.agency-grid-3 {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
-}
-
+.agency-grid-3,
 .agency-grid-4 {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 1fr;
   gap: 24px;
+  align-items: stretch;
 }
 
 /* ==========================================================================
    CARDS
    ========================================================================== */
+
 .agency-card {
   background: var(--agency-surface);
   border-radius: 16px;
-  padding: 40px 32px;
+  padding: 28px 24px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.03);
   border: 1px solid rgba(0,0,0,0.04);
   transition: var(--transition);
@@ -294,7 +338,7 @@ a {
 }
 
 .agency-card:hover {
-  transform: translateY(-8px);
+  transform: translateY(-5px);
   box-shadow: 0 20px 40px rgba(0,0,0,0.08);
 }
 
@@ -307,7 +351,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
 .agency-card-icon svg {
@@ -316,7 +360,7 @@ a {
 }
 
 .agency-card h3 {
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   margin-bottom: 12px;
   color: var(--agency-primary);
 }
@@ -330,6 +374,7 @@ a {
 /* ==========================================================================
    PORTFOLIO (MODELS)
    ========================================================================== */
+
 .agency-model-card {
   background: var(--agency-surface);
   border-radius: 16px;
@@ -337,26 +382,30 @@ a {
   box-shadow: 0 10px 30px rgba(0,0,0,0.05);
   transition: var(--transition);
   border: 1px solid rgba(0,0,0,0.04);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-width: 0;
 }
 
 .agency-model-card:hover {
-  transform: translateY(-8px);
+  transform: translateY(-5px);
   box-shadow: 0 25px 50px rgba(0,0,0,0.1);
 }
 
 .agency-model-img {
   width: 100%;
-  height: 250px;
+  height: 220px;
   background-color: var(--agency-bg);
-  position: relative;
   overflow: hidden;
 }
 
 .agency-model-img img {
   width: 100%;
-  height: auto;
-  min-height: 100%;
+  height: 100%;
   object-fit: cover;
+  object-position: center;
+  display: block;
   transition: transform 3s ease;
 }
 
@@ -365,11 +414,21 @@ a {
 }
 
 .agency-model-content {
-  padding: 32px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.agency-model-content .agency-btn-outline {
+  display: inline-flex;
+  width: 100%;
+  margin-top: auto;
+  flex-shrink: 0;
 }
 
 .agency-model-content h3 {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   margin-bottom: 12px;
   color: var(--agency-primary);
 }
@@ -378,27 +437,22 @@ a {
   color: var(--agency-text-light);
   margin-bottom: 24px;
   font-size: 0.95rem;
+  flex: 1 1 auto;
 }
 
 /* ==========================================================================
-   TIMELINE (HOW IT WORKS)
+   TIMELINE
    ========================================================================== */
+
 .agency-timeline {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
+  grid-template-columns: 1fr;
+  gap: 32px;
   position: relative;
 }
 
 .agency-timeline::before {
-  content: '';
-  position: absolute;
-  top: 30px;
-  left: 50px;
-  right: 50px;
-  height: 2px;
-  background: rgba(197, 160, 89, 0.2);
-  z-index: 0;
+  display: none;
 }
 
 .agency-step {
@@ -420,7 +474,7 @@ a {
   font-family: 'Outfit', sans-serif;
   font-weight: 700;
   font-size: 1.5rem;
-  margin: 0 auto 24px;
+  margin: 0 auto 20px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
@@ -438,10 +492,11 @@ a {
 /* ==========================================================================
    RESULT SECTION
    ========================================================================== */
+
 .agency-result-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
+  grid-template-columns: 1fr;
+  gap: 40px;
   align-items: center;
 }
 
@@ -458,26 +513,31 @@ a {
 /* ==========================================================================
    CTA FINAL
    ========================================================================== */
+
 .agency-cta {
-  background: linear-gradient(135deg, var(--agency-primary) 0%, var(--agency-primary-light) 100%);
-  padding: 100px 0;
+  background: linear-gradient(
+    135deg,
+    var(--agency-primary) 0%,
+    var(--agency-primary-light) 100%
+  );
+  padding: 70px 0;
   text-align: center;
   color: #fff;
 }
 
 .agency-cta h2 {
   color: #fff;
-  font-size: 3rem;
-  margin-bottom: 24px;
+  font-size: 2rem;
+  margin-bottom: 20px;
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
 }
 
 .agency-cta p {
-  font-size: 1.25rem;
+  font-size: 1rem;
   color: #cbd5e1;
-  margin-bottom: 40px;
+  margin-bottom: 32px;
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
@@ -485,37 +545,44 @@ a {
 
 .agency-cta-actions {
   display: flex;
-  gap: 16px;
+  gap: 12px;
   justify-content: center;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* ==========================================================================
    FOOTER
    ========================================================================== */
+
 .agency-footer {
-  background-color: #050E1D;
+  background: linear-gradient(
+    to bottom,
+    var(--agency-primary-light) 0%,
+    #050E1D 35%
+  );
   color: #94A3B8;
-  padding: 80px 0 40px;
+  padding: 70px 0 32px;
 }
 
 .agency-footer-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-  gap: 60px;
-  margin-bottom: 60px;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  margin-bottom: 40px;
+  text-align: center;
 }
 
 .agency-footer-logo img {
-  height: 60px;
-  margin-bottom: 24px;
+  height: 50px;
+  margin: 0 auto 20px;
   filter: brightness(0) invert(1);
 }
 
 .agency-footer h4 {
   color: #fff;
   font-size: 1.1rem;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
 .agency-footer ul {
@@ -534,42 +601,221 @@ a {
 
 .agency-footer-bottom {
   text-align: center;
-  padding-top: 40px;
+  padding-top: 32px;
   border-top: 1px solid rgba(255,255,255,0.1);
   font-size: 0.9rem;
 }
 
 /* ==========================================================================
-   RESPONSIVE
+   TABLET
    ========================================================================== */
-@media (max-width: 1024px) {
-  .agency-grid-4 { grid-template-columns: repeat(2, 1fr); }
-  .agency-timeline { grid-template-columns: repeat(2, 1fr); gap: 40px; }
-  .agency-timeline::before { display: none; }
+
+@media (min-width: 576px) {
+  .container {
+    padding: 0 20px;
+  }
+
+  .agency-hero-title {
+    font-size: 2.6rem;
+  }
+
+  .agency-hero-actions {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .agency-btn {
+    width: auto;
+  }
+
+  .agency-grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .agency-grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .agency-model-img {
+    height: 240px;
+  }
+
+  .agency-footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+    text-align: left;
+  }
+
+  .agency-footer-logo img {
+    margin-left: 0;
+  }
 }
 
-@media (max-width: 768px) {
-  .agency-nav {
-    display: none;
-    position: absolute;
-    top: 80px;
-    left: 0;
-    width: 100%;
-    background: #fff;
-    flex-direction: column;
-    padding: 24px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+/* ==========================================================================
+   DESKTOP
+   ========================================================================== */
+
+@media (min-width: 768px) {
+  .container {
+    padding: 0 24px;
   }
-  .agency-nav.active { display: flex; }
-  .agency-menu-btn { display: block; }
-  
-  .agency-hero-grid, .agency-result-grid { grid-template-columns: 1fr; gap: 40px; }
-  .agency-hero { padding: 120px 0 60px; text-align: center; }
-  .agency-hero-actions, .agency-hero-badges { justify-content: center; }
-  .agency-hero-title { font-size: 2.5rem; }
-  
-  .agency-grid-3 { grid-template-columns: 1fr; }
-  .agency-timeline { grid-template-columns: 1fr; }
-  .agency-footer-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
-  .agency-footer-logo img { margin: 0 auto 24px; }
+
+  .agency-header-inner {
+    height: 80px;
+  }
+
+  .agency-logo img {
+    height: 80px;
+  }
+
+  .agency-nav {
+    display: flex;
+    position: static;
+    width: auto;
+    flex-direction: row;
+    align-items: center;
+    gap: 32px;
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .agency-nav a {
+    padding: 0;
+  }
+
+  .agency-menu-btn {
+    display: none;
+  }
+
+  .agency-hero {
+    padding: 160px 0 90px;
+    text-align: left;
+  }
+
+  .agency-hero-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+  }
+
+  .agency-hero-title {
+    font-size: 3rem;
+  }
+
+  .agency-hero-subtitle {
+    font-size: 1.15rem;
+    margin-left: 0;
+  }
+
+  .agency-hero-actions {
+    justify-content: flex-start;
+  }
+
+  .agency-hero-badges {
+    justify-content: flex-start;
+  }
+
+  .agency-hero-mockup img {
+    transform: perspective(1000px) rotateY(-5deg) rotateX(5deg);
+  }
+
+  .agency-hero-mockup:hover img {
+    transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
+  }
+
+  .agency-section {
+    padding: 90px 0;
+  }
+
+  .agency-grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .agency-grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .agency-timeline {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
+
+  .agency-result-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+  }
+
+  .agency-cta {
+    padding: 90px 0;
+  }
+
+  .agency-cta h2 {
+    font-size: 2.5rem;
+  }
+
+  .agency-cta-actions {
+    flex-direction: row;
+  }
+}
+
+/* ==========================================================================
+   DESKTOP LARGE
+   ========================================================================== */
+
+@media (min-width: 1024px) {
+  .agency-hero-title {
+    font-size: 3.5rem;
+  }
+
+  .agency-grid-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .agency-timeline {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  .agency-timeline::before {
+    display: block;
+    content: '';
+    position: absolute;
+    top: 30px;
+    left: 50px;
+    right: 50px;
+    height: 2px;
+    background: rgba(197, 160, 89, 0.2);
+    z-index: 0;
+  }
+
+  .agency-model-img {
+    height: 250px;
+  }
+
+  .agency-footer-grid {
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 60px;
+    text-align: left;
+  }
+
+  .agency-footer-logo img {
+    margin: 0 0 24px;
+  }
+}
+
+/* ==========================================================================
+   DESKTOP EXTRA LARGE
+   ========================================================================== */
+
+@media (min-width: 1200px) {
+  .agency-hero {
+    padding: 180px 0 100px;
+  }
+
+  .agency-section {
+    padding: 100px 0;
+  }
+
+  .agency-cta {
+    padding: 100px 0;
+  }
 }
