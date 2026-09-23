@@ -12,6 +12,122 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/agency.css">
 
+
+
+  <style>
+    /* ==================================================
+       CARROSSEL — MODELOS
+       Mantém o layout e as proporções atuais dos cards/imagens.
+       ================================================== */
+    .agency-model-carousel {
+      position: relative;
+      width: 100%;
+    }
+
+    .agency-model-carousel-viewport {
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .agency-model-carousel-track {
+      display: flex !important;
+      flex-wrap: nowrap;
+      align-items: stretch;
+      gap: 24px;
+      transition: transform 0.45s ease;
+      will-change: transform;
+    }
+
+    .agency-model-carousel-track > .agency-model-card {
+      flex: 0 0 calc((100% - 48px) / 3);
+      min-width: 0;
+      height: auto;
+      align-self: stretch;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .agency-model-carousel-track > .agency-model-card .agency-model-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .agency-model-carousel-track > .agency-model-card .agency-model-content h3 {
+      min-height: 2.4em;
+    }
+
+    .agency-model-carousel-track > .agency-model-card .agency-model-content p {
+      flex: 1;
+    }
+
+    .agency-model-carousel-track > .agency-model-card .agency-model-content .agency-btn {
+      margin-top: auto;
+    }
+
+    .agency-model-carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 5;
+      width: 44px;
+      height: 44px;
+      border: 0;
+      border-radius: 50%;
+      background: #ffffff;
+      color: var(--agency-primary, #0A192F);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 24px;
+      line-height: 1;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .agency-model-carousel-btn:hover:not(:disabled) {
+      transform: translateY(-50%) scale(1.05);
+    }
+
+    .agency-model-carousel-btn:disabled {
+      opacity: 0.35;
+      cursor: default;
+    }
+
+    .agency-model-carousel-prev {
+      left: -22px;
+    }
+
+    .agency-model-carousel-next {
+      right: -22px;
+    }
+
+    @media (max-width: 767px) {
+      .agency-model-carousel-track {
+        gap: 16px;
+      }
+
+      .agency-model-carousel-track > .agency-model-card {
+        flex: 0 0 100%;
+      }
+
+      .agency-model-carousel-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 21px;
+      }
+
+      .agency-model-carousel-prev {
+        left: 8px;
+      }
+
+      .agency-model-carousel-next {
+        right: 8px;
+      }
+    }
+  </style>
+
 </head>
 <body class="agency-page">
 
@@ -173,8 +289,12 @@
       <h2 class="agency-title">Modelos profissionais prontos para diferentes especialidades</h2>
       <p class="agency-subtitle">Explore nossos templates base desenvolvidos com inteligência e alto requinte estético. Podemos personalizá-los 100% com a sua marca e cores.</p>
       
-      <div class="agency-grid-3">
-        <!-- Modelo 1 -->
+      <div class="agency-model-carousel" id="modelosCarousel">
+        <button type="button" class="agency-model-carousel-btn agency-model-carousel-prev" id="modelosPrev" aria-label="Modelo anterior">&#10094;</button>
+
+        <div class="agency-model-carousel-viewport">
+          <div class="agency-grid-3 agency-model-carousel-track" id="modelosTrack">
+            <!-- Modelo 1 -->
         <div class="agency-model-card">
           <div class="agency-model-img">
             <img src="assets/img/mockup_emag_v2.png" alt="Modelo Emagrecimento e Metabologia" style="width: 100%; height: 100%; object-fit: cover;">
@@ -209,6 +329,20 @@
             <a href="modelos/psiquiatria.html" target="_blank" class="agency-btn agency-btn-outline" style="width: 100%; box-sizing: border-box;">Ver demonstração</a>
           </div>
         </div>
+
+        <div class="agency-model-card">
+          <div class="agency-model-img">
+            <img src="assets/img/mockup_psiq_v2.png" alt="Modelo Psiquiatria" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          <div class="agency-model-content">
+            <h3>Psiquiatria e Saúde Mental</h3>
+            <p>Design calmo, acolhedor e com tons neutros. Privilegia a confiança, sigilo e segurança no relacionamento médico-paciente.</p>
+            <a href="modelos/psiquiatria.html" target="_blank" class="agency-btn agency-btn-outline" style="width: 100%; box-sizing: border-box;">Ver demonstração</a>
+          </div>
+          </div>
+        </div>
+
+        <button type="button" class="agency-model-carousel-btn agency-model-carousel-next" id="modelosNext" aria-label="Próximo modelo">&#10095;</button>
       </div>
     </div>
   </section>
@@ -364,6 +498,59 @@
   <a href="https://wa.me/5547991164830" target="_blank" rel="noopener" class="agency-btn-primary" style="position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 9999; box-shadow: 0 10px 20px rgba(0,0,0,0.15);" aria-label="Fale conosco no WhatsApp">
     <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
   </a>
+
+
+
+  <script>
+    (() => {
+      const track = document.getElementById('modelosTrack');
+      const prev = document.getElementById('modelosPrev');
+      const next = document.getElementById('modelosNext');
+
+      if (!track || !prev || !next) return;
+
+      const slides = Array.from(track.children);
+      let currentIndex = 0;
+
+      function getVisibleCount() {
+        return window.innerWidth <= 767 ? 1 : 3;
+      }
+
+      function getMaxIndex() {
+        return Math.max(0, slides.length - getVisibleCount());
+      }
+
+      function updateCarousel() {
+        const visibleCount = getVisibleCount();
+        const gap = parseFloat(getComputedStyle(track).gap) || 0;
+        const slideWidth = slides[0].getBoundingClientRect().width;
+
+        track.style.transform =
+          `translateX(-${currentIndex * (slideWidth + gap)}px)`;
+
+        prev.disabled = currentIndex === 0;
+        next.disabled = currentIndex >= slides.length - visibleCount;
+      }
+
+      prev.addEventListener('click', () => {
+        if (currentIndex > 0) {
+          currentIndex--;
+          updateCarousel();
+        }
+      });
+
+      next.addEventListener('click', () => {
+        if (currentIndex < getMaxIndex()) {
+          currentIndex++;
+          updateCarousel();
+        }
+      });
+
+      window.addEventListener('resize', updateCarousel);
+
+      updateCarousel();
+    })();
+  </script>
 
 </body>
 </html>
