@@ -150,7 +150,8 @@ a {
   height: 70px;
 }
 
-.agency-logo img {
+.agency-logo img,
+.agency-footer-logo img {
   height: 70px;
   width: auto;
   object-fit: contain;
@@ -674,7 +675,6 @@ a {
 }
 
 .agency-footer-logo img {
-  height: 50px;
   margin: 0 auto 20px;
   filter: brightness(0) invert(1);
 }
@@ -763,7 +763,8 @@ a {
     height: 80px;
   }
 
-  .agency-logo img {
+  .agency-logo img,
+  .agency-footer-logo img {
     height: 80px;
   }
 
